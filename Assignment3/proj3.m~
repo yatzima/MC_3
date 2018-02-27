@@ -1,0 +1,37 @@
+%Defining start and end points
+t1 = 1658;
+td1 = 1980;
+
+%Defining the length of the data set
+a = 1;
+d = (td1 - t1)*a;
+s =(td1 - t1)/d;
+
+%Defining the vector t
+t = 1658:s:1980;
+
+%Numver of disasters
+load('coal_mine_disasters.mat')
+n = length(T);
+plot(T, 1:751)
+lambda = 0.1*ones(d,1);
+
+%Gamma(2, theta)-hyperprior on theta
+psi = 1;
+theta = gampdf(1,2,psi + sum(lambda));
+
+%Gamma(2, theta)-prior on the intensitetes/lambda
+lambda = gampdf(1:d,2,theta);
+
+%Metropolis-Hasting algorithm
+rho = 1;
+R = rho*(t(i+1)-t(i-1));
+tstar =  t - R + (2*R)*rand(d, 1);
+
+
+for i = 1:d-1
+    %if else
+end
+
+
+%Gibbs sampling
