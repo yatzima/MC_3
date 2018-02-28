@@ -8,4 +8,5 @@ for l = 1:d-1
 end
 
 ft = -exponent + sum(log(lambda.^n)) + sum(log(tdiff));
+end
 
