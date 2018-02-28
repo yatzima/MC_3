@@ -1,10 +1,12 @@
 function lambda = drawLambda(theta, t, tau)
     tDiff = t(2:end) - t(1:end-1);
+    size(tDiff)
     d = length(t) - 1;
     n = zeros(d, 1);
     
     for i = 1:d
         n(i) = sum((t(i) <= tau) & (tau < t(i+1)));
     end
-    lambda = gamrnd(n + 2, theta + tDiff');
+    lambda = gamrnd(n + 2, theta + tDiff);
+    size(lambda)
 end
